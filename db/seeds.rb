@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+class Seed
+
+  def self.begin
+    seed = Seed.new
+    seed.generate_countries
+  end
+
+  def generate_countries
+    20.times do |i|
+      country = Country.create!(
+        name: Faker::Address.country
+      )
+      puts "Country #{i}: #{country.name}"
+    end
+  end
+end
