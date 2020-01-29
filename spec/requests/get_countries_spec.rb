@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 describe "get all countries route", :type => :request do
-  let!(:countries) { FactoryBot.create_list(:country, 20)}
+
+  # let!(:countries) { FactoryBot.create_list(:country, 20)}
 
   before { get '/countries' }
 

@@ -1,7 +1,7 @@
 class CountriesController < ApplicationController
 
   def index
-    @countries = {"country": "Spain"}
+    @countries = Country.all
     json_response(@countries)
   end
 
