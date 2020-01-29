@@ -1,5 +1,11 @@
 class ReviewsController < ApplicationController
 
+  def index
+    @city = City.find(params[:city_id])
+    @reviews = @city.reviews
+    json_response(@reviews)
+  end
+
   def show
     @city = City.find(params[:city_id])
     @review = Review.find(params[:id])

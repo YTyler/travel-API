@@ -1,5 +1,11 @@
 class CitiesController < ApplicationController
 
+  def index
+    @country = Country.find(params[:country_id])
+    @cities = @country.cities
+    json_response(@cities)
+  end
+
   def show
     @country = Country.find(params[:country_id])
     @city = City.find(params[:id])

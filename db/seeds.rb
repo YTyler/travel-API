@@ -13,11 +13,28 @@ class Seed
   end
 
   def generate_countries
-    20.times do |i|
+    195.times do |i|
       country = Country.create!(
         name: Faker::Address.country
       )
       puts "Country #{i}: #{country.name}"
+      5.times do
+        city = country.cities.new(
+          name: Faker::Nation.capital_city,
+          country_id: country.id
+        )
+        country.save
+        50.times do
+          city.reviews.new(
+            response: Faker::Hipster.paragraph_by_chars(characters: 200, supplemental: false)
+          )
+          city.save
+        end
+      end
     end
   end
 end
+
+Seed.begin
+
+p "Created #{Country.count} Countries, #{City.count} cities and #{Review.count} reviews"
